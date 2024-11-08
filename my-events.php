@@ -54,6 +54,11 @@ unset($pdo);
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/my-events.css">
+    <style>
+        .custom_button_delete:hover {
+            background-color: #ff0f0f;
+        }
+    </style>
 </head>
 
 <body>
