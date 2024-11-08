@@ -1,16 +1,13 @@
 <?php
 // Paramètres de connexion à la base de données
-define('DB_SERVER', 'localhost');    // Serveur de la base de données
-define('DB_USERNAME', 'root');   // Nom d'utilisateur de la base de données
-define('DB_PASSWORD', 'root');   // Mot de passe de la base de données
-define('DB_NAME', 'party_planner_db'); // Nom de la base de données
+$db_config = parse_ini_file('../includes/config.ini', true);
 
-/* Tentative de connexion à la base de données MySQL */
 try {
-    $pdo = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);
-    // Définit le mode d'erreur PDO sur exception
+/* Tentative de connexion à la base de données MySQL */
+    $pdo = new PDO("mysql:host={$db_config['database']['host']};dbname={$db_config['database']['database']}", $db_config['database']['username'], $db_config['database']['password']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e) {
-    die("ERREUR : Impossible de se connecter. " . $e->getMessage());
+    error_log("ERREUR : Impossible de se connecter. " . $e->getMessage());
+    die("ERREUR : Impossible de se connecter.");
 }
 ?>
