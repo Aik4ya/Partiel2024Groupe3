@@ -36,7 +36,7 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
     unset($stmt);
     unset($pdo);
 } else {
-    header("location: error.php");
+    header("location: my-events.php");
     exit();
 }
 ?>
